@@ -1,0 +1,32 @@
+create database IMSDev;
+
+Added schema under Security in the name of "inventory"
+
+CREATE TABLE [inventory].[User](  
+    [ID] [int] IDENTITY(1,1) NOT NULL  Primary key,  
+    [UserName] [varchar](50) NULL,  
+    [Password] [nvarchar](50) NULL,  
+    [Role] [varchar](50) NULL) 
+
+
+INSERT INTO insert into [inventory].[Users](UserName,Password,Role)
+VALUES('admin','admin@123','Admin')
+INSERT INTO [inventory].[Users](UserName,Password,Role)
+VALUES('user','user@123','User')
+
+CREATE TABLE [inventory].[Product](  
+    [ID] [int] IDENTITY(1,1) NOT NULL  Primary key,  
+    [ProductCode] [Int] NOT NULL,  
+    [ProductName] [nvarchar](50) NOT NULL,  
+    [Price] [decimal](18,1) NOT NULL,
+    [MinQuantity] [Int] NOT NULL,
+    [Quantity] [int] NOT NULL)
+
+CREATE TABLE [inventory].[Order](
+    [ID] [int] IDENTITY(1,1) NOT NULL  Primary key)
+
+CREATE TABLE [inventory].[OrderProducts](
+[ID] [int] IDENTITY(1,1) NOT NULL  Primary key,
+[OrderId] [int] FOREIGN KEY REFERENCES [inventory].[Order](ID),
+[ProductId] [int] FOREIGN KEY REFERENCES [inventory].[Product](ID)
+)
