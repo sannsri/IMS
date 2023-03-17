@@ -1,0 +1,29 @@
+﻿@model Product
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <h1>DeleteStock</h1>
+    <div>
+        <form method="post" asp-controller="Admin" asp-action="DeleteStock">
+            <div>
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="jumbotron">
+                        <div class="form-group">
+                            <label asp-for="@Model.ProductCode"></label>
+                            <input asp-for="@Model.ProductCode" id="txtProdCode" />
+                            <input type="submit" value="Search" name="delete" id="btnSearch" asp-controller="Admin" asp-action="DeleteProduct" />
+                            <span asp-validation-for="@Model.ProductCode"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.ProductName"></label>
+                            <input asp-for="@Model.ProductName" id="txtProdName" />
+                            <span asp-validation-for="@Model.ProductName"></span>
+                        </div>
+                        <div id="error-message">@ViewBag.Success</div>
+                        <div id="error-message">@ViewBag.Error</div>
+                        <input type="submit" value="Delete" id="btnDelete" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+}

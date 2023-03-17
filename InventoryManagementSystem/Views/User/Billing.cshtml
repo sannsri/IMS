@@ -1,0 +1,36 @@
+﻿@model Product
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    <h1>Billing</h1>
+
+    <div>
+        <form method="post" asp-controller="User" asp-action="SaveOrder">
+            <div><input type="hidden" id="productid" value="" /></div>
+            <div>
+                <label asp-for="@Model.ProductCode"></label>
+                <input asp-for="@Model.ProductCode" id="txtProdCode" />
+                <input type="submit" value="Search" id="btnSearch" asp-controller="User" asp-action="BillingProduct" />
+                <span asp-validation-for="@Model.ProductCode"></span>
+            </div>
+            <div>
+                <label asp-for="@Model.ProductName"></label>
+                <input asp-for="@Model.ProductName" id="txtProdName" />
+                <span asp-validation-for="@Model.ProductName"></span>
+            </div>
+            <div>
+                <label asp-for="@Model.Quantity"></label>
+                <input asp-for="@Model.Quantity" id="txtQty" />
+                <span asp-validation-for="@Model.Quantity"></span>
+            </div>
+            <div id="error-message">@ViewBag.Success</div>
+            <div id="error-message">@ViewBag.Error</div>
+            <div>
+                <input type="submit" value="Add" id="btnAdd" asp-controller="User" asp-action="AddProductToGrid" />
+                <input type="button" value="Remove" id="btnRemove" />
+            </div>
+            @Html.Partial("_BillingGrid", new List<Product>());
+        </form>
+    </div>
+   
+
+}

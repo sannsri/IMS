@@ -1,0 +1,37 @@
+﻿@model List<Product>
+@{
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td>Product Code</td>
+                    <td>Product Name</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>@item.ProductCode</td>
+                            <td>@item.ProductName</td>
+                            <td>@item.Price</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.Price*@item.Quantity</td>
+                        </tr>
+                            }
+                        }
+                    }
+            </tbody>
+        </table>
+        <div>
+            <input type="submit" value="Confirm Order" id="btnRemove" />
+        </div>
+    </div>
+}

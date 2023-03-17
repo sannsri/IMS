@@ -1,0 +1,48 @@
+﻿@model Product
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <h1>EditStock</h1>
+
+
+
+    <div>
+        <form method="post" asp-controller="Admin" asp-action="EditStock">
+            <div>
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="jumbotron">
+                        <div class="form-group">
+                            <label asp-for="@Model.ProductCode"></label>
+                            <input asp-for="@Model.ProductCode" id="txtProdCode" />
+                            <input type="submit" value="Search" id="btnSearch" asp-controller="Admin" asp-action="EditProduct" />
+                            <span asp-validation-for="@Model.ProductCode"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.ProductName"></label>
+                            <input asp-for="@Model.ProductName" id="txtProdName" />
+                            <span asp-validation-for="@Model.ProductName"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.Price"></label>
+                            <input asp-for="@Model.Price" id="txtPrice" />
+                            <span asp-validation-for="@Model.Price"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.MinQuantity"></label>
+                            <input asp-for="@Model.MinQuantity" id="txtMinQty" />
+                            <span asp-validation-for="@Model.MinQuantity"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.Quantity"></label>
+                            <input asp-for="@Model.Quantity" id="txtQty" />
+                            <span asp-validation-for="@Model.Quantity"></span>
+                        </div>
+                        <div id="error-message">@ViewBag.Success</div>
+                        <div id="error-message">@ViewBag.Error</div>
+                        <input type="submit" value="Save" id="btnSave" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+}

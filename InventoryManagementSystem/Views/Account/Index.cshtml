@@ -1,0 +1,35 @@
+﻿@model InventoryManagementSystem.Models.User
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        <div>
+            @Html.LabelFor(m => m.UserName, new { @class = "form-control", @placeholder = "username" })
+
+
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "username" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Password, new { @class = "form-control", @placeholder = "password" })
+
+
+            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @placeholder = "password" })
+        </div>
+        <div>
+            <input type="submit" id="Login" value="Login" asp-controller="Account" asp-action="Login" />
+        </div>
+    }
+
+    @*<form method="post" enctype="multipart/form-data" asp-controller="Account" asp-action="Login">
+        <p><input type="text" name="username" value="" placeholder="Username or Email" required></p>
+        <p><input type="password" name="passcode" value="" placeholder="Password" required></p>        
+        <p class="submit"><input type="submit" name="commit" value="Login"></p>
+        <hr />
+        @ViewBag.username
+    </form>*@
+</div>
